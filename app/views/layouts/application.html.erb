@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<div class="navbar">
+		<div class="navbar navbar-inner navbar-default navbar-fixed-top">
+			<div class="container">
+				<a href="#" class="navbar-brand"> Grabea</a>
+				<ul class="nav">
+					<li><%= link_to "Ideas", ideas_path %></li>
+			</div>
+		</div>
+	</div>
+<div class="container">
 <%= yield %>
-
+</div>
 </body>
 </html>

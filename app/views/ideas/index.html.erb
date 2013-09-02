@@ -1,25 +1,19 @@
-<h1>Listing ideas</h1>
+<div class="page-header">
+  <h1>Grab an idea!</h1>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Idea</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to "Post a new idea", new_idea_path, class: "btn btn-warning" %>
 
 <% @ideas.each do |idea| %>
-  <tr>
-    <td><%= idea.name %></td>
-    <td><%= idea.idea %></td>
-    <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-    <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div class="idea">
+  <strong><%= idea.name %></strong>
+  <p><%= idea.idea %></p>
+  <div class="meta">
+    <%= link_to time_ago_in_words(idea.created_at) + " ago", idea %>
+    <span class="admin">
+      | <%= link_to "Edit", edit_idea_path(idea) %> |
+      <%= link_to "Delete", idea, method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
+    </span>
+  </div>
+</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Idea', new_idea_path %>
